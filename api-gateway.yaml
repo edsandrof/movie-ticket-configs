@@ -1,2 +1,15 @@
 server:
-    port: 8080
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  config:
+    import: 'optional:configserver:http://localhost:8888/'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
