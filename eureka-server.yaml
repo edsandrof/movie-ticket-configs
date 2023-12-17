@@ -5,17 +5,17 @@ spring:
   application:
     name: eureka-server
 
-config:
-  import: 'optional:configserver:http://localhost:8888/'
+  config:
+    import: 'optional:configserver:http://localhost:8888/'
 
 eureka:
   client:
     fetch-registry: true
 
-    # The server will not register itself. Useful when you have several Eureka servers.
+    # will not register itself. useful when you have several Eureka servers.
     register-with-eureka: false
   server:
-    # The server will not automatically delete itself if it does not receive traffic for a while.
+    # will not automatically delete itself if it does not receive traffic for a while.
     enable-self-preservation: false
 
 management:
