@@ -1,21 +1,35 @@
 server:
-  port: 8080
+  port: 8082
 
 spring:
   application:
-    name: api-gateway
+    name: tickets-service
+
+  datasource:
+    url: 'jdbc:mysql://localhost:3307/tickets'
+    username: 'root'
+    password: 'mysql123'
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
 
   config:
     import: 'optional:configserver:http://CONFIG-SERVER'
 
-
   zipkin:
     base-url: 'http://localhost:9411'
+
+
+api:
+  movie-service: 'http://MOVIES-SERVICE'
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: 'http://localhost:8761/eureka/'
+
 
 management:
   endpoints:

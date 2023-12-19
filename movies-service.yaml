@@ -13,7 +13,28 @@ quarkus.hibernate-orm.physical-naming-strategy=org.hibernate.boot.model.naming.C
 quarkus.hibernate-orm.sql-load-script=import.sql
 quarkus.hibernate-orm.log.sql=true
 
+# swagger doc
+# http://localhost:8081/q/swagger-ui/
 quarkus.swagger-ui.always-include=true
 
+# config server
 quarkus.spring-cloud-config.enabled=true
-quarkus.spring-cloud-config.url=http://localhost:8888
+quarkus.spring-cloud-config.url=http://CONFIG-SERVER
+
+quarkus.otel.exporter.otlp.traces.endpoint=http://localhost:9411
+quarkus.log.console.format=%d{HH:mm:ss} %-5p traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n
+
+
+quarkus.http.access-log.pattern="...traceId=%{X,traceId} spanId=%{X,spanId}"
+
+quarkus.stork.movies-service.service-discovery.type=eureka
+quarkus.stork.movies-service.service-discovery.eureka-host=localhost
+quarkus.stork.movies-service.service-discovery.eureka-port=8761
+quarkus.stork.movies-service.service-discovery.eureka-context-path=/eureka
+quarkus.stork.movies-service.service-discovery.application=movies-service
+
+quarkus.stork.movies-service.service-registrar.type=eureka
+quarkus.stork.movies-service.service-registrar.eureka-host=localhost
+quarkus.stork.movies-service.service-registrar.eureka-port=8761
+quarkus.stork.movies-service.service-registrar.eureka-context-path=/eureka
+quarkus.stork.movies-service.service-registrar.application=movies-service
